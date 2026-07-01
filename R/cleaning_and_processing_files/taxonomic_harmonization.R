@@ -1,5 +1,5 @@
 # This script is used to do some taxonomic data harmonization!
-# Written by the immaculate Ingmar Staude
+# Written by Ingmar Staude
 # split into two chunks: plants and animals
 
 # packages
@@ -165,7 +165,7 @@ table(bodysize_plantae_harmonized$phylum)
 # ANIMALIA ----------------------------------------------------------------
 # harmonization code for animalia
 # given that urban scores are already retrieved from a GBIF based taxonomy
-# we will only check the taxononmy of the body size data frame.
+# we will only check the taxonomy of the body size data frame.
 # A few species gives an error in the code, I don't know why
 # and no way to really 'know' ahead of time until the code runs and it quits at that specific species
 # then needs to be removed. This was only for 3 species, and so these three are removed here with a filter call

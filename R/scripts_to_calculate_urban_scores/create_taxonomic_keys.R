@@ -1,4 +1,4 @@
-# a quick R script to create the taxonomic keys
+# R script to create the taxonomic keys
 # that we can use to (1) assign people to different levels to collect data
 # and (2) see the species we need body size data for
 

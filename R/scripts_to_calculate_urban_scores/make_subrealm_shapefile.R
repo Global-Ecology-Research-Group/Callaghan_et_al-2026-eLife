@@ -1,6 +1,5 @@
 # create a bioregion to subrealm table
-# I think this has to be done manually
-# and that is annoying
+# this has to be done manually
 library(sf)
 library(readr)
 library(tidyr)
