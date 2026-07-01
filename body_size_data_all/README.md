@@ -1,0 +1,1 @@
+The `all_body_size.RDS` file contains body size information by species gathered from data found in the literature, indicated by the metadata column. For full citation details, see [Figure 3-source data 1.csv](https://github.com/Global-Ecology-Research-Group/Callaghan_et_al-2026-eLife/blob/main/Supplementary%20Table%20and%20Data%20Files/Figure%203-source%20data%201.csv).
