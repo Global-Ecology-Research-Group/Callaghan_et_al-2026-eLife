@@ -8,9 +8,9 @@ Callaghan CT, et al. eLife: <https://doi.org/10.7554/eLife.109047>
 
 The overall objective of this study was to quantify whether body size is consistently associated with species' urban affinity across the tree of life. To accomplish this, we integrated three major components:
 
-1)  global species occurrence records from GBIF,
-2)  remotely sensed estimates of urbanization, and
-3)  body size measurements compiled from the published literature.
+1)  Global species occurrence records from GBIF
+2)  Remotely sensed estimates of urbanization
+3)  Body size measurements compiled from the published literature.
 
 These components were combined to generate species-level urban affinity scores, assemble a harmonized body size database, fit Bayesian hierarchical models across multiple taxonomic levels, and produce all analyses and figures presented in the manuscript.
 
@@ -46,7 +46,13 @@ To keep the repository lightweight and easy to navigate, several large intermedi
 
 A complete archived version of the repository, including all intermediate data products, SQL outputs, and fitted model objects, is available through Zenodo:
 
-DOI: XXXXX
+DOI: <https://doi.org/10.5281/zenodo.21130842>
+
+We additionally created a seperate repository to develop an interactive map of results:
+
+Repository: <https://github.com/GlobalEcologyResearchGroup/Callaghan_et_al-2026-eLife-ShinyApp>
+
+Application: <https://globalecologyresearchgroup.github.io/Callaghan_et_al-2026-eLife-ShinyApp/>
 
 ## Step 1. Calculate urban affinity scores
 
@@ -64,7 +70,11 @@ R/scripts_to_calculate_urban_scores/
 
 This directory contains the scripts used to:
 
-download and summarize GBIF occurrence data using Google BigQuery; assign observations to One Earth bioregions and subrealms; generate spatial layers required for Google Earth Engine processing; calculate species-level urban affinity scores; and compile the final urban affinity dataset used throughout the remainder of the analysis.
+- Download and summarize GBIF occurrence data using Google BigQuery
+- Assign observations to One Earth bioregions and subrealms
+- Generate spatial layers required for Google Earth Engine processing
+- Calculate species-level urban affinity scores
+- Compile the final urban affinity dataset used throughout the remainder of the analysis
 
 ## External dependencies
 
@@ -82,6 +92,7 @@ The final product of this workflow is
 
 ``` text
 urban_scores/subrealm_potential_urban_scores.RDS
+urban_scores/bioregion_potential_urban_scores.RDS
 ```
 
 This file contains the species-level urban affinity scores used throughout all subsequent analyses and serves as the primary input to the body size integration workflow described in Step 2.
@@ -94,7 +105,7 @@ During the calculation of urban affinity scores, several lookup tables and taxon
 
 This study integrates species-specific urban affinity scores with a global database of body size measurements compiled from the published literature. The literature search, data extraction, quality control, and standardization procedures used to construct this database are described in detail in the Methods section of the manuscript.
 
-Because many original body size datasets cannot be redistributed due to copyright or licensing restrictions, this repository begins with the processed body size database used in our analyses.
+Because some original body size datasets cannot be redistributed due to copyright or licensing restrictions, this repository begins with the processed body size database used in our analyses.
 
 ## Inputs
 
@@ -118,13 +129,12 @@ The resulting harmonized dataset forms the foundation for every subsequent analy
 R/cleaning_and_processing_files/
 ```
 
-The primary script is
+This directory contains two scripts used to:
 
-create_a_dataframe_for_analysis.R
-
-which:
-
-joins the urban affinity scores with the compiled body size database; performs taxonomic harmonization for plants and animals separately; creates both the direct-match and harmonized analysis datasets; and summarizes the number of species recovered through taxonomic harmonization.
+- Join the urban affinity scores with the compiled body size database
+- Perform taxonomic harmonization for plants and animals separately
+- Create both the direct-match and harmonized analysis datasets
+- Summarize the number of species recovered through taxonomic harmonization
 
 ## Outputs
 
@@ -133,9 +143,9 @@ analysis_data/analysis_data.RDS
 analysis_data/analysis_data_harmonized.RDS
 ```
 
-analysis_data.RDS contains species that matched directly between the urban affinity and body size datasets.
+`analysis_data.RDS` contains species that matched directly between the urban affinity and body size datasets.
 
-analysis_data_harmonized.RDS additionally incorporates species recovered through taxonomic harmonization and is the primary dataset used throughout the remainder of the analyses.
+`analysis_data_harmonized.RDS` additionally incorporates species recovered through taxonomic harmonization and is the primary dataset used throughout the remainder of the analyses.
 
 # Step 4. Scientific analyses
 
@@ -214,10 +224,10 @@ Each modelling script begins from the harmonized analysis dataset and performs s
 
 These include:
 
-- selecting a single representative body size measurement for each species when multiple measurements were available;
-- filtering taxonomic groups that did not meet minimum sample-size requirements for modelling;
-- generating taxonomic summaries describing the number of species, observations, subrealms, and independent body size datasets represented within each group; and
-- constructing taxonomic-level analysis datasets used for model fitting.
+- Selecting a single representative body size measurement for each species when multiple measurements were available
+- Filtering taxonomic groups that did not meet minimum sample-size requirements for modelling
+- Generating taxonomic summaries describing the number of species, observations, subrealms, and independent body size datasets represented within each group
+- Constructing taxonomic-level analysis datasets used for model fitting
 
 These intermediate datasets are written to:
 
@@ -248,7 +258,7 @@ Fitted model objects are written to:
 model_objects/
 ```
 
-with separate subdirectories for each taxonomic level.
+with separate subdirectories for each taxonomic level. While this folder and contents are not shared on this GitHub repository to keep it lightweight, they can be found in the [Zenodo Repository](https://doi.org/10.5281/zenodo.21130842).
 
 ### Model summarization
 
@@ -283,13 +293,13 @@ R/data_summarizing_and_visualization/
 
 This directory contains scripts used to:
 
-- summarize posterior distributions across taxonomic levels;
-- summarize the processed analysis datasets and urban affinity scores;
-- compare alternative modelling approaches (e.g., original versus revised family-level analyses);
-- quantify the strength and direction of estimated relationships;
-- visualize fitted Bayesian models and posterior distributions;
-- generate manuscript figures and supplementary figures; and
-- produce summary statistics and intermediate tables used throughout the manuscript.
+- Summarize posterior distributions across taxonomic levels
+- Summarize the processed analysis datasets and urban affinity scores
+- Compare alternative modelling approaches (e.g., original versus revised family-level analyses)
+- Quantify the strength and direction of estimated relationships
+- Visualize fitted Bayesian models and posterior distributions
+- Generate manuscript figures and supplementary figures
+- Produce summary statistics and intermediate tables used throughout the manuscript
 
 ## Inputs
 
@@ -302,14 +312,16 @@ model_objects/
 urban_scores/
 ```
 
+Keep in mind that the model_objects/ folder contents are not shared on this GitHub repository to keep it lightweight, but they can be found in the [Zenodo Repository](https://doi.org/10.5281/zenodo.21130842).
+
 ## Outputs
 
 The primary outputs include:
 
-- manuscript figures;
-- supplementary figures;
-- visualizations of fitted Bayesian models and posterior distributions;
-- summary statistics describing model results across taxonomic levels; and
-- intermediate tables used to generate the results presented in the manuscript.
+- Manuscript figures
+- Supplementary figures
+- Visualizations of fitted Bayesian models and posterior distributions
+- Summary statistics describing model results across taxonomic levels
+- Intermediate tables used to generate the results presented in the manuscript
 
 ------------------------------------------------------------------------
